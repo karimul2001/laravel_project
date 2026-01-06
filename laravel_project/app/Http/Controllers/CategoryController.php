@@ -29,7 +29,18 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // use Eloqute
+        $category = [
+            'name' => $request->category
+        ];
+        Category::create($category);
+        return redirect('/dashboard');
+
+        // Use Insert method
+
+        //dd($request);
+        //return $request->category;
+        //return"I am here";
     }
 
     /**

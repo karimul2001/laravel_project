@@ -75,7 +75,7 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">Category List</h4>
-                    <button class="btn btn-outline-info" style="margin-left:800px">Add Category</button>
+                    <button class="btn btn-outline-info" style="margin-left:800px"><a href="{{route('category.create')}}">Add Category</a></button>
 
                 </div>
                 <table class="table m-b-0">
