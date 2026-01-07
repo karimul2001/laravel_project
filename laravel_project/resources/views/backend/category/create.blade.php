@@ -52,13 +52,23 @@
 @section("content")
 
 <div class="col-lg-12  m-b-30">
-    <h5 class="m-b-20">Category Entry</h5>
+    <h4 class="m-b-20">Category Entry</h4>
+    @if ($errors->any())
+    <div class="alert alert-danger">
+    @foreach ($errors->all() as $error)
+        <div class="alert alert-danger">{{ $error }}</div>
+        
+    @endforeach
+    </div>
+        
+    @endif
+        
         <!-- Contact -->
         <form method="POST" action="{{route('category.store')}}">
             @csrf
             <div class="form-group">
                 <label>Category Name:</label>
-                <input type="text" class="form-control" name="category" id="exampleInputname1" placeholder="Enter Category name"> </div>
+                <input type="text" class="form-control" value="{{ old ('category')}}" name="category" id="exampleInputname1" placeholder="Enter Category name"> </div>
             
             <button type="submit" class="btn btn-info">Submit</button>
         </form>

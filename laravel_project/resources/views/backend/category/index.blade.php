@@ -71,7 +71,16 @@
     <!-- Start Page Content -->
     <!-- ============================================================== -->
     <div class="row">
+
+        
+        
         <div class="col-12">
+            {{-- successfull massege show conditin --}}
+            @if(
+              session('success'))
+              <div class="alert alert-success">{{session('success')}}</div>
+          
+            @endif
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">Category List</h4>
@@ -89,13 +98,21 @@
                     </thead>
                     <tbody>
                         @foreach ($cats as $cat)
-                        <tr>
+                        <tr> 
+                            {{-- use form to delete success --}}
+                            <form action="{{route('category.destroy', $cat->id)}}" method="post">
+                                @csrf
+                                @method('delete')
                             <th scope="row">{{$cat->id}}</th>
                             <td>{{$cat->name}}</td>
                             <td>
-                                <botton class="btn btn-info">Edit</botton>
-                                <botton class="btn btn-primary">Delete</botton>
+                                <a href="{{route('category.edit', $cat->id)}}" class="btn btn-info">Edit</a>
+                                
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                                
+                                
                             </td>
+                            </form>
 
                         </tr>
                         @endforeach

@@ -29,12 +29,28 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+
+        //   Validation
+
+        $request->validate(
+            [
+                'category' => 'required:max:10|min:3|unique:categories,name'  //validation condition
+            ],
+            [
+                'required' => 'Category must be entered',
+                'min' => 'Category name minimum 3 latter',
+                'max' => 'Category name maximum 10 latter'
+            ]
+            );
+
         // use Eloqute
         $category = [
             'name' => $request->category
         ];
+
+        // route er modde taka page a hit korbe // then success massege show index page
         Category::create($category);
-        return redirect('/dashboard');
+        return redirect()->route('category.index')->with('success', 'Category Added');
 
         // Use Insert method
 
@@ -56,7 +72,9 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        return view('backend.category.edit');
+        //dd($category);
+        //return "now i am here";
+        return view('backend.category.edit', compact('category'));
     }
 
     /**
@@ -64,14 +82,33 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+
+        // validation 
+
+        $request->validate(
+            [
+                'category' => 'required:max:10|min:3|unique:categories,name'  //validation condition
+            ],
+            [
+                'required' => 'Category must be entered',
+                'min' => 'Category name minimum 3 latter',
+                'max' => 'Category name maximum 10 latter'
+            ]
+            );
+        //dd($request);
+        $data = [
+            'name' => $request->category
+        ];
+        $category->update($data);
+        return redirect()->route('category.index')->with('success', 'Successfully Updated');
     }
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(Category $category)
-    {
-        //
+    {   //delete function
+        $category->delete();
+        return redirect()->route('category.index')->with('success', 'Successfully Delete');
     }
 }
