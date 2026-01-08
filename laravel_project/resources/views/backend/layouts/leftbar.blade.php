@@ -70,13 +70,13 @@
                             </a>
                             <ul aria-expanded="false" class="collapse first-level">
                                 <li class="sidebar-item">
-                                    <a href="form-inputs.html" class="sidebar-link">
+                                    <a href="/product" class="sidebar-link">
                                         <i class="mdi mdi-priority-low"></i>
                                         <span class="hide-menu"> All products</span>
                                     </a>
                                 </li>
                                 <li class="sidebar-item">
-                                    <a href="form-input-groups.html" class="sidebar-link">
+                                    <a href="product/create" class="sidebar-link">
                                         <i class="mdi mdi-rounded-corner"></i>
                                         <span class="hide-menu"> Add products</span>
                                     </a>
