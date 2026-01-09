@@ -34,7 +34,7 @@ class CategoryController extends Controller
 
         $request->validate(
             [
-                'category' => 'required:max:10|min:3|unique:categories,name'  //validation condition
+                'category' => 'required|max:10|min:3|unique:categories,name'  //validation condition
             ],
             [
                 'required' => 'Category must be entered',
