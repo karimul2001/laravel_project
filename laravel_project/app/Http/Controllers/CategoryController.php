@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
+
 
 class CategoryController extends Controller
 {
@@ -12,7 +15,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $cats = Category::all(); // category query laravel
+       $cats = DB::table('categories')->get();   //create query use query builder DB
+        //$cats = Category::all(); // category query laravel use eqolite ORM
         return view('backend.category.index', compact('cats'));
     }
 

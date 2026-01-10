@@ -52,7 +52,7 @@
 @section("content")
 
 <div class="col-lg-12  m-b-30">
-    <h4 class="m-b-20">Category Entry</h4>
+    <h4 class="m-b-20">Product Entry</h4>
     @if ($errors->any())
     <div class="alert alert-danger">
     @foreach ($errors->all() as $error)
@@ -64,14 +64,46 @@
     @endif
         
         <!-- Contact -->
-        <form method="POST" action="{{route('category.update', $category->id)}}">
+        <form method="POST" action="{{route('product.store')}}" enctype="multipart/form-data">
             @csrf
-            @method('put')
             <div class="form-group">
-                <label>Category Name:</label>
-                <input type="text" class="form-control" value="{{!old('category')? $category->name : old('category')}}" name="category" id="exampleInputname1" placeholder="Enter Category name"> </div>
+                <label>Product Name:</label>
+                <input type="text" class="form-control" value="{{ old ('product_name')}}" name="product_name" id="exampleInputname1" placeholder="Enter Product name"> 
+            </div>
+            <div class="form-group">
+                <label>Product Deatils:</label><br>
+                <textarea name="details" value="{{old ('details')}}" id="exampleInputname1" cols="150" rows="2" placeholder=""></textarea>
+            </div>
+            <div class="form-group">
+                <label>Product SKU:</label>
+                <input type="text" class="form-control"  value="{{old ('product_sku')}}" name="product_sku" id="exampleInputname1" placeholder=""> 
+            </div>
+            <div class="form-group">
+                <label>Product Stock:</label>
+                <input type="number" class="form-control" value="{{ old ('product_stock')}}" name="product_stock" id="exampleInputname1" placeholder=""> 
+            </div>
+            <div class="form-group">
+                <label>Product Price:</label>
+                <input type="number" class="form-control" value="{{ old ('price')}}" name="price" id="exampleInputname1" placeholder=""> 
+            </div>
+            <div class="form-group">
+                <label>Photo:</label>
+                <input type="file" class="form-control" value="" name="photo" id="exampleInputname1" placeholder=""> 
+            </div>
+            <div class="form-group">
+                <label>Category:</label>
+                <select name="category" id="" class="form-control">
+                    <option value="">Select One</option>
+                    @foreach ($data as $item)
+                        
+                    
+                    <option value="{{$item->id}}">{{$item->name}}</option>
+
+                    @endforeach
+                </select>
+            </div>
             
-            <button type="submit" class="btn btn-info">Update</button>
+            <button type="submit" class="btn btn-info">UPDATE</button>
         </form>
 </div>
 
