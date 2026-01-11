@@ -21,7 +21,19 @@
         <!-- Topbar header - style you can find in pages.scss -->
         <!-- ============================================================== -->
         <!-- Header include -->
+
+        <?php //echo auth()->user() ; ?>
+            {{-- @dd(auth()->guard()) --}}
+
+        @if(Auth::guard('web')->check())
+
+
          @include ("backend.layouts.header")
+         @elseif (Auth::guard('admin')->check())
+         @include("backend.layouts.adminHeader")
+         @elseif (Auth::guard('manager')->check())
+         @include("backend.layouts.managerHeader")
+         @endif
         <!-- ============================================================== -->
         <!-- End Topbar header -->
         <!-- ============================================================== -->
@@ -29,7 +41,13 @@
         <!-- Left Sidebar - style you can find in sidebar.scss  -->
         <!-- ============================================================== -->
         <!-- Left bar include -->
+         @if(Auth::guard('web')->check())
          @include("backend.Layouts.leftbar")
+         @elseif (Auth::guard('admin')->check())
+          @include("backend.layouts.adminLeftbar")
+         @elseif (Auth::guard('manager')->check())
+          @include("backend.layouts.managerLeftbar")
+         @endif
         <!-- ============================================================== -->
         <!-- End Left Sidebar - style you can find in sidebar.scss  -->
         <!-- ============================================================== -->

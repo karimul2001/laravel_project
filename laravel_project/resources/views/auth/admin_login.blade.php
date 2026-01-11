@@ -48,6 +48,7 @@
                     <!-- Form -->
                     <div class="row">
                         <div class="col-12">
+                            <php echo Auth() ?>
                             <form method="post" class="form-horizontal m-t-20" id="loginform" action="{{ route('admin.login') }}">
                                 @csrf
                                 <div class="input-group mb-3">

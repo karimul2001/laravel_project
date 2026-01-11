@@ -43,12 +43,13 @@
                 <div id="loginform">
                     <div class="logo">
                         <span class="db"><img src="../../assets/images/logo-icon.png" alt="logo" /></span>
-                        <h5 class="font-medium m-b-20">Sign In to User</h5>
+                        <h5 class="font-medium m-b-20">Sign In to Manager</h5>
                     </div>
                     <!-- Form -->
                     <div class="row">
                         <div class="col-12">
-                            <form method="post" class="form-horizontal m-t-20" id="loginform" action="{{ route('login') }}">
+                            <php echo Auth() ?>
+                            <form method="post" class="form-horizontal m-t-20" id="loginform" action="{{ route('manager.login') }}">
                                 @csrf
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
